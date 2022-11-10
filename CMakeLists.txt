@@ -219,11 +219,14 @@ endif()
 #
 
 if(CUKE_ENABLE_GTEST)
-    set(GTEST_USE_STATIC_LIBS ${CUKE_USE_STATIC_GTEST})
-    if(NOT GMOCK_ROOT)
-        set(GMOCK_ROOT "${CMAKE_CURRENT_BINARY_DIR}/gmock")
+
+    if(NOT GTEST_FOUND)
+        set(GTEST_USE_STATIC_LIBS ${CUKE_USE_STATIC_GTEST})
+        if(NOT GMOCK_ROOT)
+            set(GMOCK_ROOT "${CMAKE_CURRENT_BINARY_DIR}/gmock")
+        endif()
+        find_package(GMock REQUIRED)
     endif()
-    find_package(GMock REQUIRED)
 endif()
 
 #
