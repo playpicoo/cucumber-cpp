@@ -24,7 +24,7 @@ const InvokeResult GTestStep::invokeStepBody() {
 void GTestStep::initGTest() {
     int fake_argc = 1;
     char *fake_argv[1];
-    fake_argv[0] = (char *) "cucumber-cpp";
+    fake_argv[0] = const_cast<char*>("cucumber-cpp");
     ::testing::InitGoogleTest(&fake_argc, fake_argv);
     initialized = true;
 }
